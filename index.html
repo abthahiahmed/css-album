@@ -1,0 +1,184 @@
+<!-- CSS Album By Abthahi Ahmed Rifat (@IAmAbthahi) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<style>
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    body{
+        background:#023047;
+    }
+
+    .wrapper{
+        width: 200px;
+        margin: 150px auto 10px auto;
+        text-align: center;
+    }
+
+    .album{
+        position: relative;
+        width: 220px;
+        height: 260px;
+        perspective: 1000px;
+    }
+    .f{
+        padding: 10px;
+    }
+    .page{
+        position: absolute;
+        width: 220px;
+        height: 260px;
+        transform-origin: 0px;
+        background-color: white;
+        transition: transform 1s;
+        z-index: 0;
+        backface-visibility: hidden;
+        top: 0;
+        left: 0;
+        transform-style: preserve-3d;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+        text-align: center;
+    }
+    .page::after{
+        content: '';
+        position: absolute;
+        background-color: #e7e7e7;
+        width: 220px;
+        height: 260px;
+        top: 0;
+        left: 0;
+        transform: rotateY(180deg);
+        backface-visibility: hidden;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .page img{
+        width: 100%;
+        background-color: white;
+        border-radius: 10px;
+    }
+    button{
+        border: none;
+        outline: none;
+        padding: 5px 20px;
+        background: white;
+        margin-top: 10px;
+        cursor: pointer;
+        font-size: 1.2rem;
+        border-radius: 25px;
+    }
+
+    .cover{
+        background: linear-gradient(to right bottom, #7752FE, #190482);
+        color:white;
+        text-align: center;
+    }
+    .cover h3{
+        margin-top: 20%;
+        border: 1px solid white;
+        padding: 10px 5px;
+        margin-bottom: 1em;
+        border-radius: 10px;
+    }
+
+</style>
+<body>
+    <div class="wrapper">
+        <div class="album">
+            <div class="page">
+                <div class="f">
+                    <h2>The End</h2>
+                    <p>Like and Follow the page to support me and more content like this.</p>
+                    <p>@IAmAbthahi</p>
+                </div>
+            </div>
+            <div class="page">
+                <div class="f">
+                    <img src="img-6.jpg">
+                    Image 6
+                </div>
+            </div>
+            <div class="page">
+                <div class="f">
+                    <img src="img-5.jpg">
+                    Image 5
+                </div>
+            </div>
+            <div class="page">
+                <div class="f">
+                    <img src="img-4.jpg">
+                    Image 4
+                </div>
+            </div>
+            <div class="page">
+                <div class="f">
+                    <img src="img-3.jpg">
+                    Image 3
+                </div>
+            </div>
+            <div class="page">
+                <div class="f">
+                    <img src="img-2.jpg">
+                    Image 2
+                </div>
+            </div>
+            <div class="page">
+                <div class="f">
+                    <img src="img-1.jpg">
+                    Image 1
+                </div>
+            </div>
+            <div class="page cover">
+                <div class="f">
+                    <h3>Welcome to CSS Album</h3>
+                    <p>By Abthahi Ahmed Rifat</p>
+                    <br>
+                    <p>@IAmAbthahi</p>
+                </div>
+            </div>
+        </div>
+        <button id="turn">Turn</button>
+    </div>
+    
+
+<script>
+    // @IAmAbthahi
+    let turnButton = document.getElementById('turn');
+    let pages = document.querySelectorAll('.page');
+    var index = pages.length - 1;
+    var z = 0;
+
+    turnButton.addEventListener('click', function(e){
+        pages[index].style.zIndex = z;
+        pages[index].style.transform = 'rotateY(-180deg)';
+        index--;
+        z++;
+        if (index < 0){
+            index = pages.length - 1;
+            
+            for (var i = 0; i < pages.length; i++){
+                
+                pages[i].style.transform = 'rotateY(0deg)';
+                pages[i].style.zIndex = 0;
+            }
+            z = 0;
+        }
+    })
+
+
+</script>
+
+</body>
+</html>
